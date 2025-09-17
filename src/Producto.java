@@ -1,10 +1,13 @@
 public class Producto {
+
     private String nombre;
-    private int codigo;
+    private  int codigo;
     private Double precio;
     private Categoria categoria;
     private int stock;
 
+    public Producto() {
+    }
 
     public Producto(String nombre, int codigo, Double precio, Categoria categoria, int stock) {
         this.nombre = nombre;
@@ -18,16 +21,8 @@ public class Producto {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public int getCodigo() {
         return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public Double getPrecio() {
@@ -54,9 +49,18 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getValor() {
+    public Double getValor() {
+        return this.stock * this.precio ;
+    }
 
-
-        return "";
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", codigo=" + codigo +
+                ", precio=" + precio +
+                ", categoria=" + categoria +
+                ", stock=" + stock +
+                '}';
     }
 }
