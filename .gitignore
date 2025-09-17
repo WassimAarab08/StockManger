@@ -1,6 +1,6 @@
 ### IntelliJ IDEA ###
 out/
-
+.gitignore
 .idea/
 !StockManger.iml
 
