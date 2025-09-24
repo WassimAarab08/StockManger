@@ -1,7 +1,7 @@
 public class Producto {
 
     private String nombre;
-    private  int codigo;
+    private  String codigo;
     private Double precio;
     private Categoria categoria;
     private int stock;
@@ -9,7 +9,7 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String nombre, int codigo, Double precio, Categoria categoria, int stock) {
+    public Producto(String nombre, String codigo, Double precio, Categoria categoria, int stock) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.precio = precio;
@@ -21,7 +21,7 @@ public class Producto {
         return nombre;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
@@ -55,12 +55,11 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" +
-                "nombre='" + nombre + '\'' +
-                ", codigo=" + codigo +
-                ", precio=" + precio +
-                ", categoria=" + categoria +
-                ", stock=" + stock +
-                '}';
+        return
+                "Nombre : " + nombre + '\n'+
+                "Codigo : " + codigo +'\n'+
+                "Precio : " + precio +"€\n"+
+                "Categoria : " + categoria +'\n'+
+                "Stock : " + stock ;
     }
 }

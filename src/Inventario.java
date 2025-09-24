@@ -1,14 +1,21 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Inventario {
     HashMap<String, Producto> productos;
 
 
+    public Inventario() {
+        productos = new HashMap<>();
+    }
+
 
     public void imprimir() {
       for (Producto producto : productos.values()) {
-          System.out.printf("%s: %s\n", producto.getCodigo(), producto.toString());
+          System.out.printf("Codigo => %s\n%s\n", producto.getCodigo(), producto.toString());
+          System.out.println();
       }
 
     }
@@ -45,19 +52,43 @@ public class Inventario {
         Scanner sc = new Scanner(System.in);
         Producto productoStock = productos.get(codigo);
         int cantidadActualStock = productoStock.getStock();
-
         productoStock.setStock(cantidadActualStock - cantidadVendida);
         Double total = cantidadVendida*productoStock.getPrecio();
-        System.out.printf("Se han vendido %s de %s por %f ", cantidadActualStock,productoStock.getNombre() ,total );
+        System.out.printf("Se han vendido %s de %s por %f€ ", cantidadActualStock,productoStock.getNombre() ,total );
         sc.close();
-
-
     }
 
-    public void agregarProducto(String id,Producto producto ) {
-        productos.put(id,producto);
+    public void agregarProducto(Producto producto ) {
+        productos.put(producto.getCodigo(),producto);
     }
 
+    public List<Producto> getProductos(Categoria categoria) {
+        List<Producto> productos2 = new ArrayList<>();
+        for (Producto producto : productos.values()) {
+            if (categoria.equals(producto.getCategoria())) {
+                productos2.add(producto);
+            }
+        }
+        return productos2;
+    }
+
+    public Double importeTotal(){
+        Double total = 0.0;
+        for (Producto producto : productos.values()) {
+          total=  producto.getPrecio() * producto.getPrecio();
+
+        }
+        return total;
+    }
+
+    public Long cantidadTotalStock() {
+        Long total = 0L;
+        for (Producto producto : productos.values()) {
+            total += producto.getStock();
+
+        }
+        return total;
+    }
 
 
 }
