@@ -14,8 +14,9 @@ public class Inventario {
 
     public void imprimir() {
       for (Producto producto : productos.values()) {
-          System.out.printf("Codigo => %s\n%s\n", producto.getCodigo(), producto.toString());
+          System.out.printf("%s\n", producto.toString());
           System.out.println();
+
       }
 
     }
@@ -37,25 +38,24 @@ public class Inventario {
         sc.close();
     }
 
-    public void restarStock(String codigo) {
-        Scanner sc = new Scanner(System.in);
+
+    //Big 0(1)
+    public void restarStock(String codigo,int cantidadRestar) {
+
         Producto productoStock = productos.get(codigo);
         int cantidadActualStock = productoStock.getStock();
         System.out.print("Cantidad de stock a restar: ");
-        int cantidadRestar = sc.nextInt();
         productoStock.setStock(cantidadActualStock - cantidadRestar);
         System.out.printf("Stock restado: %s\n", productoStock.getCodigo());
-        sc.close();
     }
-
+    //Big 0(1)
     public void vender(String codigo ,int cantidadVendida) {
-        Scanner sc = new Scanner(System.in);
         Producto productoStock = productos.get(codigo);
         int cantidadActualStock = productoStock.getStock();
         productoStock.setStock(cantidadActualStock - cantidadVendida);
         Double total = cantidadVendida*productoStock.getPrecio();
-        System.out.printf("Se han vendido %s de %s por %f€ ", cantidadActualStock,productoStock.getNombre() ,total );
-        sc.close();
+        System.out.printf("Se han vendido %s de %s por %f€ ", cantidadVendida,productoStock.getNombre().toLowerCase(),total );
+
     }
 
     public void agregarProducto(Producto producto ) {
@@ -72,6 +72,7 @@ public class Inventario {
         return productos2;
     }
 
+    //Big O(n)
     public Double importeTotal(){
         Double total = 0.0;
         for (Producto producto : productos.values()) {
@@ -81,6 +82,7 @@ public class Inventario {
         return total;
     }
 
+    //Big O(n)
     public Long cantidadTotalStock() {
         Long total = 0L;
         for (Producto producto : productos.values()) {

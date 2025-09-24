@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -24,8 +26,13 @@ public class Main {
         inventario.agregarProducto(p9);
         inventario.agregarProducto(p10);
 
-        System.out.print(  inventario.cantidadTotalStock());
+        System.out.print( inventario.cantidadTotalStock());
+        System.out.println("\n");
         inventario.imprimir();
+        inventario.vender("109",2);
+
+        inventario.imprimir();
+
 
 
     }
